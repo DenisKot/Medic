@@ -12,6 +12,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace PharmacyPurchase
 {
+    using Infrastracture;
+    using Microsoft.EntityFrameworkCore;
+    using PharmancyPurchase.Application;
+    using PharmancyPurchase.Data;
+    using PharmancyPurchase.Data.Migrations;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -31,6 +37,7 @@ namespace PharmacyPurchase
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            this.ComfigureModules(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -58,6 +65,23 @@ namespace PharmacyPurchase
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // Run seed
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetService<AppDbContext>().Configuration();
+            }
+        }
+
+        private void ComfigureModules(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+
+
+            DataModule.ConfigureServices(serviceCollection);
+            InfrastractureModule.ConfigureServices(serviceCollection);
+            ApplicationModule.ConfigureServices(serviceCollection);
         }
     }
 }

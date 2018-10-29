@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PharmacyPurchase</title>
+    <title>@ViewData["Title"] - Medicaments</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -31,6 +31,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Medicaments" asp-action="List">Medicaments</a></li>
+                    <li><a asp-area="" asp-controller="Sales" asp-action="List">Sales</a></li>
+                    <li><a asp-area="" asp-controller="Orders" asp-action="List">Orders</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
@@ -44,7 +47,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - PharmacyPurchase</p>
+            <p>&copy; 2018 - DevTeam - Kotenko, Kryvoruchlo, Chernytsun, Velko, Scherbak</p>
         </footer>
     </div>
 

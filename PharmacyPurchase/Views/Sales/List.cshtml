@@ -1,0 +1,32 @@
+﻿@model object
+
+@{
+    ViewBag.Title = "Sales";
+    Layout = "_Layout";
+}
+
+<h2>Sales</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Date & time</th>
+            <th scope="col">Bought</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in ViewBag.List)
+            {
+                <tr class="table-light">
+                    <th scope="row">@item.Title</th>
+                    <td>@item.TotalPrice</td>
+                    <td>@item.DateTime</td>
+                    <td>@ViewBag.GetItmes(item)</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
