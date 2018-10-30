@@ -17,7 +17,7 @@
 
         public IActionResult List()
         {
-            var list = this.saleService.GetAll();
+            var list = this.saleService.GetList();
             Func<Sale, string> func = this.GetBoughtItems;
 
             this.ViewData["List"] = list;

@@ -6,6 +6,7 @@
     using PharmacyPurchase.Presentation.Controllers;
     using PharmancyPurchase.Application.Orders;
     using PharmancyPurchase.Communication;
+    using PharmancyPurchase.Communication.Orders;
     using Xunit;
 
     public class MedicamentsControllerTest

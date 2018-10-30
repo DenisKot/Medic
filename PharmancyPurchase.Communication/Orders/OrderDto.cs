@@ -1,9 +1,15 @@
-﻿namespace PharmancyPurchase.Communication
+﻿namespace PharmancyPurchase.Communication.Orders
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class OrderDto
     {
+        public OrderDto()
+        {
+            this.OrderDtails = new HashSet<OrderDetailDto>();
+        }
+
         [JsonProperty("id")]
         public int Id { get; set; }
 
@@ -24,5 +30,8 @@
 
         [JsonProperty("needToOrderCount")]
         public int NeedToOrderCount { get; set; }
+
+        [JsonProperty("orderDtails")]
+        public ICollection<OrderDetailDto> OrderDtails { get; set; }
     }
 }

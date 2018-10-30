@@ -15,8 +15,10 @@ namespace PharmacyPurchase
     using Infrastracture;
     using Microsoft.EntityFrameworkCore;
     using PharmancyPurchase.Application;
+    using PharmancyPurchase.Crosscutting;
     using PharmancyPurchase.Data;
     using PharmancyPurchase.Data.Migrations;
+    using Presentation.Services;
 
     public class Startup
     {
@@ -78,6 +80,7 @@ namespace PharmacyPurchase
             serviceCollection.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
+            serviceCollection.AddTransient<IConfigurationService, ConfigurationService>();
 
             DataModule.ConfigureServices(serviceCollection);
             InfrastractureModule.ConfigureServices(serviceCollection);
@@ -85,3 +88,4 @@ namespace PharmacyPurchase
         }
     }
 }
+

@@ -15,7 +15,7 @@
 
         public IActionResult List()
         {
-            var list = this.medicamentsService.GetAll();
+            var list = this.medicamentsService.GetList();
             this.ViewData["List"] = list;
 
             return this.View();

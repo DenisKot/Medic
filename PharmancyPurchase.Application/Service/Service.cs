@@ -58,12 +58,12 @@
             return instance;
         }
 
-        public IQueryable<T> Query()
+        public IQueryable<T> GetAll()
         {
             return this.repository.GetAll();
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetList()
         {
             return this.repository.GetAllList();
         }

@@ -5,6 +5,7 @@
     using Moq;
     using PharmancyPurchase.Application.Orders;
     using PharmancyPurchase.Communication;
+    using PharmancyPurchase.Communication.Orders;
     using PharmancyPurchase.Core;
     using PharmancyPurchase.Core.Domain.Entities;
     using PharmancyPurchase.Crosscutting;

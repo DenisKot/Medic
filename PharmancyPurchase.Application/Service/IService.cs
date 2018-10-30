@@ -20,9 +20,9 @@
 
         T GetBy(Expression<Func<T, bool>> exp);
 
-        IQueryable<T> Query();
+        IQueryable<T> GetAll();
 
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetList();
 
         IEnumerable<T> FindBy(Expression<Func<T, bool>> exp);
     }

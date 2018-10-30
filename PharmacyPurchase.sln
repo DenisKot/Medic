@@ -33,7 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Infrastracture", "04. I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PharmacyPurchase.Infrastracture", "PharmacyPurchase.Infrastracture\PharmacyPurchase.Infrastracture.csproj", "{7C2B496A-A9B7-4B62-A5C9-440422C8EFFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PharmacyPurchase.Tests", "PharmacyPurchase.Tests\PharmacyPurchase.Tests.csproj", "{04AB4CC4-EFED-42C1-A079-70DFEEDB62A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PharmacyPurchase.Tests", "PharmacyPurchase.Tests\PharmacyPurchase.Tests.csproj", "{04AB4CC4-EFED-42C1-A079-70DFEEDB62A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
