@@ -38,7 +38,10 @@
 
         public virtual void Update(T instance)
         {
-            this.repository.Update(instance);
+            if (this.repository.FirstOrDefault(x => x.Id == instance.Id) != null)
+            {
+                this.repository.Update(instance);
+            }
         }
 
         public virtual void Delete(T instance)
