@@ -20,6 +20,7 @@
         public virtual T Create(T instance)
         {
             instance.Id = this.repository.InsertAndGetId(instance);
+            repository.SaveChanges();
             return instance;
         }
 
@@ -32,6 +33,7 @@
             }
             
             this.repository.Update(instance);
+            repository.SaveChanges();
 
             return instance;
         }
@@ -41,12 +43,14 @@
             if (this.repository.FirstOrDefault(x => x.Id == instance.Id) != null)
             {
                 this.repository.Update(instance);
+                repository.SaveChanges();
             }
         }
 
         public virtual void Delete(T instance)
         {
             this.repository.Delete(instance);
+            repository.SaveChanges();
         }
 
         public virtual T Load(int id)

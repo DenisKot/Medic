@@ -17,9 +17,9 @@
         public IActionResult List()
         {
             var list = this.medicamentsService.GetList();
-            this.ViewData["List"] = list;
+            //this.ViewData["List"] = list;
 
-            return this.View();
+            return this.View(list);
         }
 
         [HttpGet]
@@ -29,10 +29,16 @@
             return Ok(searchMedicament);
         }
 
-        [HttpPost]
-        public IActionResult AddNewMedicamentToList(Medicament medicament)
+        [HttpGet]
+        public IActionResult AddNewMedicamentView()
         {
-            this.medicamentsService.Create(medicament);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddNewMedicament(Medicament medicament)
+        {
+            var id = this.medicamentsService.Create(medicament);
 
             return RedirectToAction("List");
         }
