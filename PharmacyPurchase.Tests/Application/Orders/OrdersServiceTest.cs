@@ -25,7 +25,10 @@
             repoMock.Setup(a => a.GetAllListAsync()).Returns(Task.FromResult<List<Medicament>>(new List<Medicament>()));
             var mappingMock = new Mock<IMappingService>();
             mappingMock.Setup(a => a.Map<IEnumerable<OrderDto>>(It.IsAny<IEnumerable<Medicament>>())).Returns(new List<OrderDto>(){ expected });
-            var service = new OrdersAppService(repoMock.Object, mappingMock.Object);
+            var repoMedSaleMock = new Mock<IRepository<MedicamentSale>>();
+            var confServiceMock = new Mock<IConfigurationService>();
+
+            var service = new OrdersAppService(repoMock.Object, mappingMock.Object, repoMedSaleMock.Object, confServiceMock.Object);
 
             // Act
             var result = await service.GetPossibleOrdersAsync();
