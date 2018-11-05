@@ -1,30 +1,40 @@
-﻿@model object
+﻿@model List< PharmancyPurchase.Core.Domain.Entities.Medicament>
 @{
     ViewData["Title"] = "Medicaments";
 }
 
 <h2>Medicaments</h2>
-
 <table class="table table-hover">
     <thead>
         <tr>
             <th scope="col">Title</th>
             <th scope="col">Price</th>
-            <th scope="col">Items Available</th>
+            <th scope="col">Model[i]s Available</th>
             <th scope="col">Vendor</th>
         </tr>
     </thead>
     <tbody>
         @{
-            foreach (var item in ViewBag.List)
+            for (int i=0; i < Model.Count; i++)
             {
                 <tr class="table-light">
-                    <th scope="row">@item.Title</th>
-                    <td>@item.Price</td>
-                    <td>@item.ItemsAvailable</td>
-                    <td>@item.Vendor</td>
+                    <th scope="row">@Model[i].Title</th>
+                    <td>@Model[i].Price</td>
+                    <td>@Model[i].ItemsAvailable</td>
+                    <td>@Model[i].Vendor</td>
+                    
+                    <td>
+                        @using (Html.BeginForm("DeleteMedicament", "Medicaments", FormMethod.Post))
+                        {
+                            @Html.Hidden("medicamentId", Model[i].Id);
+                            <b>@Model[i].Id</b>
+                            <input type="submit" value="Delete" />
+                        }
+                    </td>
                 </tr>
             }
         }
     </tbody>
 </table>
+
+@Html.ActionLink("Add new medicament", "AddNewMedicamentView", "Medicaments", null, new { @class = "btn" })
