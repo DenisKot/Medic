@@ -3,9 +3,9 @@
     ViewData["Title"] = "Medicaments";
 }
 
-<h2>Medicaments</h2>
+<h2 class="page-heading">Orders</h2>
 
-<table class="table table-hover">
+<table class="table table_blur">
     <thead>
     <tr>
         <th scope="col">Title</th>
@@ -19,8 +19,8 @@
     @{
         foreach (var item in ViewBag.List)
         {
-            <tr class="table-light">
-                <th scope="row">@item.Title</th>
+            <tr >
+                <td>@item.Title</td>
                 <td>@item.Price</td>
                 <td>@item.ItemsAvailable</td>
                 <td>@item.Vendor</td>

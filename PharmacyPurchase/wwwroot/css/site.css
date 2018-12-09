@@ -3,6 +3,8 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #f3f3f3;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
 /* Wrapping element */
@@ -34,4 +36,123 @@ body {
     .carousel-caption {
         display: none;
     }
+}
+
+h2.page-heading {
+    text-align: center;
+    margin: 30px auto;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.body-content {
+    min-height: 77vh;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #504f4f;
+    border-color: #504f4f;
+}
+
+hr {
+    border-top: 1px solid #b7b3b3;
+}
+
+.table_blur {
+    background: #ffffff;
+    border-collapse: collapse;
+    text-align: left;
+    border-radius: 2px;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+.table.table_blur > thead > tr {
+    background: #504f4f;
+}
+
+.table.table_blur > thead > tr > th {
+    font-size: 15px;
+    color: white;
+    padding: 10px 15px;
+}
+
+.table.table_blur > thead > tr > th :first-child {
+    text-align: center;
+}
+
+.table_blur th:after {
+    content: "";
+    display: block;
+    left: 0;
+    top: 25%;
+    height: 25%;
+    width: 100%;
+}
+
+.table_blur tr:nth-child(odd) {
+    background: #ececec;
+}
+
+.table_blur td {
+    padding: 10px 15px;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.table_blur tbody:hover td {
+    color: transparent;
+    text-shadow: 0 0 3px #a09f9d;
+}
+
+.table_blur tbody:hover tr:hover td {
+    color: #444444;
+    text-shadow: none;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+    width: 480px;
+}
+
+.grid-item {
+    padding: 13px;
+}
+
+.grid-item input{
+   width: 300px;
+   height: 35px;
+}
+
+.grid-item label{
+   margin-bottom: 0;
+}
+
+.grid-item.submit {
+  grid-column: 1 / span 2;
+}
+
+.grid-item.submit input{
+  width: 100%;
+  height: 40px;
+}
+
+img.img-medicine {
+    height: 400px;
+}
+
+.text-medicine br{
+    margin-bottom: 10px;
+}
+
+.home-page {
+    margin-top: 50px;
+}
+
+.btn-price {
+    display: flex;
+    justify-content: flex-end;
 }

@@ -3,38 +3,37 @@
     ViewData["Title"] = "Medicaments";
 }
 
-<h2>Medicaments</h2>
-<table class="table table-hover">
+<h2 class="page-heading">Medicaments</h2>
+<table class="table table_blur">
     <thead>
         <tr>
             <th scope="col">Title</th>
             <th scope="col">Price</th>
-            <th scope="col">Model[i]s Available</th>
+            <th scope="col">Models Available</th>
             <th scope="col">Vendor</th>
+            <th scope="col"></th>
         </tr>
     </thead>
-    <tbody>
-        @{
-            for (int i=0; i < Model.Count; i++)
-            {
-                <tr class="table-light">
-                    <th scope="row">@Model[i].Title</th>
-                    <td>@Model[i].Price</td>
-                    <td>@Model[i].ItemsAvailable</td>
-                    <td>@Model[i].Vendor</td>
-                    
-                    <td>
-                        @using (Html.BeginForm("DeleteMedicament", "Medicaments", FormMethod.Post))
-                        {
-                            @Html.Hidden("medicamentId", Model[i].Id);
-                            <b>@Model[i].Id</b>
-                            <input type="submit" value="Delete" />
-                        }
-                    </td>
-                </tr>
-            }
+    @{
+        for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@Model[i].Title</td>
+                <td>@Model[i].Price</td>
+                <td>@Model[i].ItemsAvailable</td>
+                <td>@Model[i].Vendor</td>
+
+                <td>
+                    @using (Html.BeginForm("DeleteMedicament", "Medicaments", FormMethod.Post))
+                    {
+                        @Html.Hidden("medicamentId", Model[i].Id);
+
+                        <input type="submit" value="Delete" />
+                    }
+                </td>
+            </tr>
         }
-    </tbody>
+    }
 </table>
 
-@Html.ActionLink("Add new medicament", "AddNewMedicamentView", "Medicaments", null, new { @class = "btn" })
+@Html.ActionLink("Add new medicament", "AddNewMedicamentView", "Medicaments", null, new { @class = "btn btn-primary", @role = "button" })

@@ -1,21 +1,41 @@
 ﻿@model PharmancyPurchase.Core.Domain.Entities.Medicament
-<h2>Add new medicament</h2>
+<h2 class="page-heading">Add new medicament</h2>
 
 @using (Html.BeginForm("AddNewMedicament", "Medicaments", FormMethod.Post))
 {
-    @Html.LabelFor(x => x.Title)
-    @Html.TextBoxFor(x => x.Title)
-    <hr />
-    @Html.LabelFor(x => x.Description)
-    @Html.TextBoxFor(x => x.Description)
-    <hr />
-    @Html.LabelFor(x => x.ItemsAvailable)
-    @Html.TextBoxFor(x => x.ItemsAvailable)
-    <hr />
-    @Html.LabelFor(x => x.Price)
-    @Html.TextBoxFor(x => x.Price)
-    <hr />
-    @Html.LabelFor(x => x.Vendor)
-    @Html.TextBoxFor(x => x.Vendor)
-    <input type="submit" value="Enter" />
-}
+<div class="grid-container">
+    <div class="grid-item">
+        @Html.LabelFor(x => x.Title)
+    </div>
+    <div class="grid-item">
+        @Html.TextBoxFor(x => x.Title)
+    </div>
+    <div class="grid-item">
+        @Html.LabelFor(x => x.Description)
+    </div>
+    <div class="grid-item">
+        @Html.TextBoxFor(x => x.Description)
+    </div>
+    <div class="grid-item">
+        @Html.LabelFor(x => x.ItemsAvailable, "Avalable items")
+    </div>
+    <div class="grid-item">
+        @Html.TextBoxFor(x => x.ItemsAvailable)
+    </div>
+    <div class="grid-item">
+        @Html.LabelFor(x => x.Price)
+    </div>
+    <div class="grid-item">
+        @Html.TextBoxFor(x => x.Price)
+    </div>
+    <div class="grid-item">
+        @Html.LabelFor(x => x.Vendor)
+    </div>
+    <div class="grid-item">
+        @Html.TextBoxFor(x => x.Vendor)
+    </div>
+    <div class="grid-item submit">
+        <input type="submit" class="btn btn-primary" role = "button" value="Add medicament" />
+    </div>
+</div>
+ }
