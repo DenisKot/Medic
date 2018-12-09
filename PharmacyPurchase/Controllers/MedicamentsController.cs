@@ -1,5 +1,6 @@
 ﻿namespace PharmacyPurchase.Presentation.Controllers
 {
+    using System;
     using Microsoft.AspNetCore.Mvc;
     using PharmancyPurchase.Application.Service;
     using PharmancyPurchase.Core.Domain.Entities;
@@ -78,7 +79,7 @@
         }
 
         [HttpPost]
-        public IActionResult Buy(PurchaseItems items)
+        public IActionResult Buy([FromBody] PurchaseItems items)
         {
             
             return this.Ok();

@@ -1,11 +1,12 @@
-﻿@model List< PharmancyPurchase.Core.Domain.Entities.Medicament>
+﻿@model List<PharmancyPurchase.Core.Domain.Entities.Medicament>
 @{
     ViewData["Title"] = "Medicaments";
 }
 
-<h2 class="page-heading">Medicaments</h2>
-<table class="table table_blur">
-    <thead>
+<div ng-controller="MedicamentsListController as ctrl">
+    <h2 class="page-heading">Medicaments</h2>
+    <table class="table table_blur">
+        <thead>
         <tr>
             <th scope="col">Title</th>
             <th scope="col">Price</th>
@@ -13,27 +14,33 @@
             <th scope="col">Vendor</th>
             <th scope="col"></th>
         </tr>
-    </thead>
-    @{
-        for (int i = 0; i < Model.Count; i++)
-        {
-            <tr>
-                <td>@Model[i].Title</td>
-                <td>@Model[i].Price</td>
-                <td>@Model[i].ItemsAvailable</td>
-                <td>@Model[i].Vendor</td>
+        </thead>
+        @{
+            for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td ng-init="@("ctrl.items.model" + Model[i].Id + "Count = 1")">
+                        <input type="checkbox" ng-model="@("ctrl.items.model" + Model[i].Id)">
+                        <input type="number" ng-model="@("ctrl.items.model" + Model[i].Id + "Count")" ng-if="@("ctrl.items.model" + Model[i].Id)" style="width: 40px;">
+                        @Model[i].Title
+                    </td>
+                    <td>@Model[i].Price</td>
+                    <td>@Model[i].ItemsAvailable</td>
+                    <td>@Model[i].Vendor</td>
 
-                <td>
-                    @using (Html.BeginForm("DeleteMedicament", "Medicaments", FormMethod.Post))
-                    {
-                        @Html.Hidden("medicamentId", Model[i].Id);
+                    <td>
+                        @using (Html.BeginForm("DeleteMedicament", "Medicaments", FormMethod.Post))
+                        {
+                            @Html.Hidden("medicamentId", Model[i].Id);
 
-                        <input type="submit" value="Delete" />
-                    }
-                </td>
-            </tr>
+                            <input type="submit" value="Delete" />
+                        }
+                    </td>
+                </tr>
+            }
         }
-    }
-</table>
+    </table>
 
-@Html.ActionLink("Add new medicament", "AddNewMedicamentView", "Medicaments", null, new { @class = "btn btn-primary", @role = "button" })
+    @Html.ActionLink("Add new medicament", "AddNewMedicamentView", "Medicaments", null, new { @class = "btn btn-primary", @role = "button" })
+    <a class="btn btn-primary" role="button" ng-click="ctrl.buyItems();">Buy medicaments</a>
+</div>
