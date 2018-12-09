@@ -4,6 +4,7 @@
     using PharmancyPurchase.Application.Service;
     using PharmancyPurchase.Core.Domain.Entities;
     using System.Collections.Generic;
+    using PharmancyPurchase.Communication.Purchase;
 
     public class MedicamentsController : Controller
     {
@@ -74,6 +75,13 @@
             this.medicamentsService.Update(medicament);
 
             return RedirectToAction("List");
+        }
+
+        [HttpPost]
+        public IActionResult Buy(PurchaseItems items)
+        {
+            
+            return this.Ok();
         }
 
         private IEnumerable<Medicament> GetListOfMedicaments(IEnumerable<int> medicamentIds)
