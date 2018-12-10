@@ -2,31 +2,37 @@
 @{
     ViewData["Title"] = "Medicaments";
 }
+<div ng-controller="OrderListController as ctrl">
+    <h2 class="page-heading">Orders</h2>
 
-<h2 class="page-heading">Orders</h2>
-
-<table class="table table_blur">
-    <thead>
-    <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Price</th>
-        <th scope="col">Items Available</th>
-        <th scope="col">Vendor</th>
-        <th scope="col">Need to order count</th>
-    </tr>
-    </thead>
-    <tbody>
-    @{
-        foreach (var item in ViewBag.List)
-        {
-            <tr >
-                <td>@item.Title</td>
-                <td>@item.Price</td>
-                <td>@item.ItemsAvailable</td>
-                <td>@item.Vendor</td>
-                <td>@item.NeedToOrderCount</td>
+    <table class="table table_blur">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Items Available</th>
+                <th scope="col">Vendor</th>
+                <th scope="col">Need to order count</th>
             </tr>
-        }
-    }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @{
+                foreach (var item in ViewBag.List)
+                {
+                    <tr>
+                        <td ng-init="@("ctrl.items.model" + item.Id + "Count = 1")">
+                            <input type="checkbox" ng-model="@("ctrl.items.model" + item.Id)">
+                            <input type="number" ng-model="@("ctrl.items.model" + item.Id + "Count")" ng-if="@("ctrl.items.model" + item.Id)" style="width: 40px;">
+                            @item.Title
+                        </td>
+                        <td>@item.Price</td>
+                        <td>@item.ItemsAvailable</td>
+                        <td>@item.Vendor</td>
+                        <td>@item.NeedToOrderCount</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-primary" role="button" ng-click="ctrl.buyItems();">New Order</a>
+</div>

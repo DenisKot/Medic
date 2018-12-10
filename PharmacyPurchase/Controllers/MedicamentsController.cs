@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 namespace PharmacyPurchase.Presentation.Controllers
 {
@@ -89,27 +88,27 @@ namespace PharmacyPurchase.Presentation.Controllers
             if (!items.Items.Any(x => x.Count > 0)) return BadRequest("Number of elements less than zero");
             {
                 var medicamentSales = new List<MedicamentSale>();
-                double sum = 0;
+                double totalPrice = 0;
                 foreach (var item in items.Items)
                 {
-                    var med = _medicamentsService.GetBy(x => x.Id == item.Id);
+                    var medicament = _medicamentsService.GetBy(x => x.Id == item.Id);
                     var medicamentSale = new MedicamentSale
                     {
-                        Medicament = med,
+                        Medicament = medicament,
                         Count = item.Count
                     };
 
-                    sum += med.Price * item.Count;
+                    totalPrice += medicament.Price * item.Count;
 
                     medicamentSales.Add(medicamentSale);
-                    med.ItemsAvailable = med.ItemsAvailable - item.Count;
-                    _medicamentsService.Update(med);
+                    medicament.ItemsAvailable = medicament.ItemsAvailable - item.Count;
+                    _medicamentsService.Update(medicament);
                 }
 
                 var sale = new Sale
                 {
                     MedicamentSales = medicamentSales,
-                    TotalPrice = sum
+                    TotalPrice = totalPrice
                 };
 
                 _saleService.Create(sale);
