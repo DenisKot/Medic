@@ -23,6 +23,7 @@
         IQueryable<T> GetAll();
 
         IEnumerable<T> GetList();
+        IEnumerable<T> GetList(params Expression<Func<T, object>>[] propertySelectors);
 
         IEnumerable<T> FindBy(Expression<Func<T, bool>> exp);
     }

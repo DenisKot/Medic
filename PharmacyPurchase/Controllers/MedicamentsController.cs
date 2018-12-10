@@ -108,7 +108,8 @@ namespace PharmacyPurchase.Presentation.Controllers
                 var sale = new Sale
                 {
                     MedicamentSales = medicamentSales,
-                    TotalPrice = totalPrice
+                    TotalPrice = totalPrice,
+                    DateTime = DateTime.Now
                 };
 
                 _saleService.Create(sale);

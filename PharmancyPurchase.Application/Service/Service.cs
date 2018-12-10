@@ -75,6 +75,11 @@
             return this.repository.GetAllList();
         }
 
+        public IEnumerable<T> GetList(params Expression<Func<T, object>>[] propertySelectors)
+        {
+            return this.repository.GetAllIncluding(propertySelectors);
+        }
+
         public IEnumerable<T> FindBy(Expression<Func<T, bool>> exp)
         {
             return this.repository.GetAllList(exp);

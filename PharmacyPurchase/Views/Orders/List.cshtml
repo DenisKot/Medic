@@ -20,7 +20,7 @@
                 foreach (var item in ViewBag.List)
                 {
                     <tr>
-                        <td ng-init="@("ctrl.items.model" + item.Id + "Count = 1")">
+                        <td ng-init="@("ctrl.items.model" + item.Id + "Count = " + item.NeedToOrderCount)">
                             <input type="checkbox" ng-model="@("ctrl.items.model" + item.Id)">
                             <input type="number" ng-model="@("ctrl.items.model" + item.Id + "Count")" ng-if="@("ctrl.items.model" + item.Id)" style="width: 40px;">
                             @item.Title

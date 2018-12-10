@@ -5,8 +5,8 @@
 var items = {};
 
 
-angular.module('medicApp', [])
-    .controller('MedicamentsListController', ['$scope', '$http', function ($scope, $http) {
+var app = angular.module('medicApp', []);
+    app.controller('MedicamentsListController', ['$scope', '$http', function ($scope, $http) {
         this.items = {};
         
         this.buyItems = function () {
@@ -39,43 +39,8 @@ angular.module('medicApp', [])
         };
     }]);
 
-angular.module('medicApp', [])
-    .controller('MedicamentsListController', ['$scope', '$http', function ($scope, $http) {
-        this.items = {};
 
-        this.buyItems = function () {
-            var itemsToBuy = [];
-
-            for (var key in this.items) {
-                var value = this.items[key];
-                if (value === true) {
-                    var count = this.items[key + "Count"];
-                    if (count > 0) {
-                        itemsToBuy.push({
-                            id: parseInt(key.replace(/model/, '')),
-                            count: count
-                        });
-                    }
-                }
-            }
-
-            var req = {
-                method: 'POST',
-                url: '/Medicaments/buy',
-                data: {
-                    items: itemsToBuy
-                }
-            };
-
-            $http(req).then(function () {
-                location.reload();
-            });
-        };
-    }]);
-
-
-angular.module('medicApp', [])
-    .controller('OrderListController', ['$scope', '$http', function ($scope, $http) {
+    app.controller('OrderListController', ['$scope', '$http', function ($scope, $http) {
         this.items = {};
 
         this.buyItems = function () {
