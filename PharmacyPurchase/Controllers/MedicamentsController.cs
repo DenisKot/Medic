@@ -75,6 +75,19 @@ namespace PharmacyPurchase.Presentation.Controllers
         }
 
         [HttpPost]
+        public IActionResult SearchMedicament(string searchedValue)
+        {
+            var allMedicaments = this._medicamentsService.GetAll();
+
+            var foundedMedicaments =
+                allMedicaments.Where(m => m.Title.Contains(searchedValue, StringComparison.OrdinalIgnoreCase) ||
+                                           m.Vendor.Contains(searchedValue, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+            return View("List", foundedMedicaments);
+        }
+
+        [HttpPost]
         public IActionResult ChangeMedicament(Medicament medicament)
         {
             this._medicamentsService.Update(medicament);

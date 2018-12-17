@@ -43,4 +43,13 @@
 
     @Html.ActionLink("Add new medicament", "AddNewMedicamentView", "Medicaments", null, new { @class = "btn btn-primary", @role = "button" })
     <a class="btn btn-primary" role="button" ng-click="ctrl.buyItems();">Buy medicaments</a>
+    @using (Html.BeginForm("SearchMedicament", "Medicaments", FormMethod.Post))
+    {
+        <div class="grid-container col-md-offset-4">
+            <div class="grid-item">
+                <input type="text" id="input-tagautocomplete" name="searchedValue" />
+                <input class="btn btn-primary" type="submit" value="Search medicament" />
+            </div>
+        </div>
+    }
 </div>
