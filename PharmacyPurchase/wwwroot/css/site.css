@@ -53,17 +53,17 @@ h2.page-heading {
 .body-content {
     min-height: 77vh;
 }
-
+/*
 .btn-primary {
     color: #fff;
     background-color: #504f4f;
     border-color: #504f4f;
-}
+}*/
 
 hr {
     border-top: 1px solid #b7b3b3;
 }
-
+/*
 .table_blur {
     background: #ffffff;
     border-collapse: collapse;
@@ -115,7 +115,7 @@ hr {
     color: #444444;
     text-shadow: none;
 }
-
+*/
 .grid-container {
     display: grid;
     grid-template-columns: 150px 1fr;
